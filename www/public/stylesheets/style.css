@@ -1,3 +1,11 @@
+/*color combo*/
+/*
+#0099CC
+#CCFFCC
+#66CCFF
+#003399
+*/
+
 html,body{
   margin: 0px;
   padding: 0px;
@@ -6,9 +14,10 @@ html,body{
 body {
   /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #0099CC;
 }
 body #gnb{
-  background-color: #ccc;
+  background-color: #003399;
   height: 30px;
 }
 body #gnb ul{
@@ -32,7 +41,7 @@ body #gnb ul li a{
 }
 
 body #gnb ul li a:hover{
-  color: gold;
+  color: #66CCFF;
 }
 
 a {
@@ -43,6 +52,9 @@ a {
   width: 800px;
   margin-left: auto;
   margin-right: auto;
+  background-color: #66CCFF;
+  border: 2px solid #003399;
+  margin-top: 100px;
 }
 #content #room{
   background-color: #ddd;
@@ -64,6 +76,7 @@ a {
 }
 #content #room-list div{
   border-bottom: 1px solid #eee;
+  cursor: pointer;
 }
 #content #room-list div:hover{
   background-color: #ddd;
