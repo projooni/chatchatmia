@@ -38,6 +38,7 @@ body #gnb ul li a{
   color: seashell;
   text-decoration: none;
   line-height: 30px;
+  font-weight: bold;
 }
 
 body #gnb ul li a:hover{
@@ -59,6 +60,20 @@ a {
 #content #room{
   background-color: #ddd;
   margin-bottom: 1em;
+  position: relative;
+}
+#content ul.window-btn-group{
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  list-style: none;
+}
+#content ul.window-btn-group li{
+  display: inline-block;
+  background-color: black;
+  width: 20px;
+  height: 16px;
+  /*line-height: normal;*/
 }
 #content #messages{
   width: 690px;
