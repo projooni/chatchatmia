@@ -1,0 +1,58 @@
+html,body{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  /*padding: 50px;*/
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+body #gnb{
+  background-color: #ccc;
+  height: 30px;
+}
+body #gnb ul{
+  list-style: none;
+  color: seashell;
+  margin: 0px;
+  padding: 0px;
+  height: 30px;
+}
+body #gnb ul li{
+  display: inline-block;
+  margin: 0px 10px;
+
+
+}
+
+body #gnb ul li a{
+  color: seashell;
+  text-decoration: none;
+  line-height: 30px;
+}
+
+body #gnb ul li a:hover{
+  color: gold;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#content{
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#content #room{
+  background-color: #ddd;
+  margin-bottom: 1em;
+}
+#content #messages{
+  width: 690px;
+  height: 300px;
+  overflow: auto;
+  background-color: #eee;
+  margin-bottom: 1em;
+  marign-right: 10px;
+}
