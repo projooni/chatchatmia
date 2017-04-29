@@ -56,3 +56,23 @@ a {
   margin-bottom: 1em;
   marign-right: 10px;
 }
+#content #room-list{
+  float: right;
+  width: 100px;
+  height: 300px;
+  overflow: auto;
+}
+#content #room-list div{
+  border-bottom: 1px solid #eee;
+}
+#content #room-list div:hover{
+  background-color: #ddd;
+}
+#content #send-message{
+  width: 700px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+#content #help{
+  font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
