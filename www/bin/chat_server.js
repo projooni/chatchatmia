@@ -7,14 +7,19 @@ var guestNumber = 1;
 var nickNames = {};
 var namesUsed = [];
 var currentRoom = {};
+var guiStatusEachSocket = [];
 
 exports.listen = function(server){
     io = socketio.listen(server);
     io.set('log lovel', 1);
 
     io.sockets.on('connection', function(socket){
+        socket.emit('connected', {text : 'connected'});
+
         guestNumber = assignGuestName(socket, guestNumber, nickNames, namesUsed);
         joinRoom(socket, 'Lobby'); // 사용자가 접속하면 대기실로 이동
+
+
 
         handleMessageBroadcasting(socket, nickNames);
         handleNameChangeAttempts(socket, nickNames, namesUsed);
@@ -24,6 +29,19 @@ exports.listen = function(server){
             // console.log({'io.sockets.manager.rooms':io.sockets.manager.rooms});
             socket.emit('rooms', io.sockets.manager.rooms);
         });
+
+        var usersSocketList = [];
+        var clientsInRoom = io.sockets.clients('Lobby');
+        for( var index in clientsInRoom ){
+            usersSocketList.push(clientsInRoom[index].id);
+            guiStatusEachSocket.push({
+                id: clientsInRoom[index].id,
+                left: 50*index + 'px',
+                top: 0 + 'px'
+            });
+        }
+        socket.emit('drawClient', {'usersArray':guiStatusEachSocket});
+        socket.broadcast.to('Lobby').emit('drawClient', {'usersArray': guiStatusEachSocket});
 
         handleClientDisconnection(socket, nickNames, namesUsed);
 
@@ -45,11 +63,17 @@ function joinRoom(socket, room){
     socket.join(room);
     currentRoom[socket.id] = room;
     socket.emit('joinResult', {room: room});
+
+    // 현재 연결된 client 리스트
+    var clients = io.sockets.clients();
+    console.log({'connected clients': clients});
+
     socket.broadcast.to(room).emit('message',{
         text: nickNames[socket.id] + ' has joined ' + room + '.'
     });
 
     var usersInRoom = io.sockets.clients(room);
+
     if(usersInRoom.length > 1){
         var usersInRoomSummary = 'Users currently in ' + room + ': ';
         for(var index in usersInRoom){
@@ -60,9 +84,12 @@ function joinRoom(socket, room){
                 }
 
                 usersInRoomSummary += nickNames[userSocketId];
+
             }
         }
         usersInRoomSummary += '.';
+        console.log('call drawClient!!!');
+
         socket.emit('message', {text: usersInRoomSummary});
     }
 }
@@ -122,6 +149,14 @@ function handleClientDisconnection(socket){
         var userName = nickNames[socket.id];
         delete namesUsed[nameIndex];
         delete nickNames[socket.id];
-        socket.emit('disconnect', userName);
+        var delIdx;
+        for( var index in guiStatusEachSocket ){
+            if(socket.id == guiStatusEachSocket[index].id){
+                delIdx = index;
+            }
+        }
+        guiStatusEachSocket.splice(delIdx,1);
+        socket.emit('drawClient', {'usersArray':guiStatusEachSocket});
+        socket.broadcast.emit('disconnect', userName);
     });
 }

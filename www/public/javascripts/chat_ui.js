@@ -8,6 +8,32 @@ $(document).ready(function(){
     console.log({'socket':socket});
    var chatApp = new Chat(socket);
 
+   // 내가 정의한 소켓 메서드
+    socket.on('connected', function(result){
+        console.log(result.text);
+    });
+    socket.on('drawClient', function(result){
+       console.log('drawClient 호출되었다능');
+       console.log({result:result});
+       var clients = result.usersArray;
+       console.log(clients);
+
+       $('.user').remove();
+
+       for(var index in clients){
+
+           // alert(clients[index].left);
+           // $("body").append('<span class="user"></span>').css('background-color','blue');
+           $('<span class="user"></span>').appendTo("body").css('left',clients[index].left);
+
+
+
+
+
+        }
+
+    });
+
    socket.on('nameResult', function(result){
       var message;
 
@@ -31,7 +57,7 @@ $(document).ready(function(){
    });
 
    socket.on('disconnect', function(userName){
-       alert('연결해제!');
+       console.log('disconeected!!');
        $('#messages').append(userName + ' 가 나갔습니다.');
    });
 

@@ -104,3 +104,30 @@ a {
 #content #help{
   font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
+.user{
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 30px;
+
+  animation: wave 2s infinite;
+
+}
+.user:hover{
+  cursor: pointer;
+}
+
+@keyframes wave {
+
+  from{
+    background-color:red;
+  }
+  to{
+    background-color:gold;
+  }
+  
+}
