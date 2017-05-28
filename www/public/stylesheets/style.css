@@ -107,6 +107,11 @@ a {
 #contents.lnb-open{ animation: contents-lnb-open 1s forwards;}
 #contents.lnb-close{ animation: contents-lnb-close 1s forwards;}
 #contents > #messages{ padding: 10px; }
+#contents > #messages > div{
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px dotted red;
+}
 #contents > #send-form{
   width: 100%;
   font-size: 0px;
