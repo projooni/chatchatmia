@@ -24,7 +24,7 @@ $(document).ready(function(){
 
            // alert(clients[index].left);
            // $("body").append('<span class="user"></span>').css('background-color','blue');
-           $('<span class="user"></span>').appendTo("body").css('left',clients[index].left);
+           // $('<span class="user"></span>').appendTo("body").css('left',clients[index].left);
 
 
 
@@ -46,7 +46,7 @@ $(document).ready(function(){
    });
 
    socket.on('joinResult', function(result){
-       $('#room').text(result.room);
+       $('#room-name').text(result.room);
        $('#messages').append(divSystemContentElement('Room changed.'));
    });
 
@@ -92,6 +92,64 @@ $(document).ready(function(){
       processUserInput(chatApp, socket);
       return false;
    });
+
+
+
+
+   var $el = {
+       roomName: $('#room-name'),
+       lnb: $('#lnb'),
+       contents: $('#contents')
+   };
+
+    $el.roomName.each(function(index, item){
+       console.log('room-name 이벤트 바인딩 forEach');
+
+       $(item).on('click', function(){
+
+           console.log('room-name is clicked');
+
+           if($(this).hasClass('open')){
+               // 열려있었다면.. 닫는다.
+
+               $(this).toggleClass('open');
+               $(this).addClass('close');
+
+               if($el.lnb.hasClass('open')){
+                   $el.lnb.toggleClass();
+                   $el.lnb.addClass('close');
+               }
+
+               if($el.contents.hasClass('lnb-open')){
+                   $el.contents.toggleClass();
+                   $el.contents.addClass('lnb-close');
+               }
+
+           }else{
+               // 닫혀있었다면.. 연다.
+
+               $(this).toggleClass('close');
+               $(this).addClass('open');
+
+               if($el.lnb.hasClass('close')){
+                   $el.lnb.toggleClass();
+                   $el.lnb.addClass('open');
+               }
+
+               if($el.contents.hasClass('lnb-close')){
+                   $el.contents.toggleClass();
+                   $el.contents.addClass('lnb-open');
+               }
+
+           }
+
+
+
+       });
+
+   });
+
+
 
 });
 
