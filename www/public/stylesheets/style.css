@@ -36,11 +36,28 @@ body #gnb{
   /*margin: 0px 10px;*/
 /*}*/
 #gnb #room-name{display: inline-block; line-height:30px; width: 200px; text-align:center;
-  text-decoration: none; position: relative; color:#F9F8F4}
+  text-decoration: none; position: relative; color:#F9F8F4; font-weight: bold; font-size: 16px;}
 #gnb #room-name.close:hover{background-color:#C6BFAF;}
 #gnb #room-name.open:hover{background-color:#C6BFAF;}
 #gnb #room-name.close{  background-color: transparent; }
 #gnb #room-name.open{  background-color: #C6BFAF; }
+
+#gnb .profile{
+  position: absolute;
+  right: 20px;
+  top: 0px;
+  height: 30px;
+  text-decoration: none;
+}
+#gnb .profile:hover{
+  background-color: gold;
+}
+#gnb .profile .user-name{
+  line-height: 30px;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 
 
@@ -64,7 +81,7 @@ a {
 #lnb #room-list > div{
   height: 30px;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 30px;
 }
 #lnb #room-list > div:hover{
@@ -74,13 +91,14 @@ a {
   position: absolute;
   bottom: 5px;
   left: 5px;
-  width: 190px;
+  width: 186px;
   height: 30px;
   text-decoration: none;
   color: black;
   background-color: #F9F8F4;
   text-align: center;
   line-height: 30px;
+  border: 2px solid #918D84;
 }
 #lnb .create-room-btn:hover{
   background-color: gold;
@@ -88,7 +106,7 @@ a {
 #contents{left: 200px; width: calc(100% - 200px); height: calc(100% - 30px); background-color:#F9F8F4; position: absolute;}
 #contents.lnb-open{ animation: contents-lnb-open 1s forwards;}
 #contents.lnb-close{ animation: contents-lnb-close 1s forwards;}
-
+#contents > #messages{ padding: 10px; }
 #contents > #send-form{
   width: 100%;
   font-size: 0px;
