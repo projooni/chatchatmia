@@ -3,6 +3,8 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
   </head>
   <body>
 
@@ -18,7 +20,8 @@
     <div id="room-list">
       <div></div>
     </div>
-    <a href="#" class="create-room-btn">채널 생성</a>
+    <a href="#" id="create-room-btn">채널 생성</a>
+
 
   </div>
 
@@ -55,10 +58,55 @@
     <!--</form>-->
   <!--</div>-->
 
+  <div id="create-channel-modal" class="modal mw">
+
+    <div class="bg"></div>
+    <div class="fg">
+      <div class="contents"></div>
+    </div>
+    <button type="button" onclick="document.getElementById('create-channel-modal').style.display='none'">Close</button>
+
+  </div>
+
+
   <script src="../socket.io/socket.io.js" type="text/javascript"></script>
   <script src="http://code.jquery.com/jquery-1.8.0.min.js" type="text/javascript"></script>
   <script src="./javascripts/chat.js" type="text/javascript"></script>
   <script src="./javascripts/chat_ui.js" type="text/javascript"></script>
+
+  <script>
+    $(document).ready(function(){
+        var socket = io.connect();
+        var chatApp = new Chat(socket);
+
+        $el = {
+            createChannelBtn: $('#create-room-btn')
+        }
+
+        $el.createChannelBtn.on('click', function(e){
+
+            $('.mw').css('display', 'block');
+
+            $.ajax({
+                url:'./map',
+                dataType:'html',
+                success:function(data){
+                    console.log(data);
+                    $('#create-channel-modal .contents').html(data);
+                    $(document).on('click', 'svg .municipality', function(){
+//                        alert($(this).attr('data-name'));
+                        chatApp.processCommand('/join ' + $(this).attr('data-name'));
+                        $('.mw').css('display', 'none');
+                    });
+
+                }
+            })
+
+
+        });
+
+    });
+  </script>
 
   </body>
 </html>

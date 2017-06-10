@@ -87,7 +87,7 @@ a {
 #lnb #room-list > div:hover{
   background-color: gold;
 }
-#lnb .create-room-btn{
+#lnb #create-room-btn{
   position: absolute;
   bottom: 5px;
   left: 5px;
@@ -100,7 +100,7 @@ a {
   line-height: 30px;
   border: 2px solid #918D84;
 }
-#lnb .create-room-btn:hover{
+#lnb #create-room-btn:hover{
   background-color: gold;
 }
 #contents{left: 200px; width: calc(100% - 200px); height: calc(100% - 30px); background-color:#F9F8F4; position: absolute;}
@@ -122,73 +122,8 @@ a {
   left: 0px;
 }
 
-/*#contents.lnb-open > #send-form{*/
-  /*left: 0px;*/
-/*}*/
-/*#contents.lnb-close > #send-form{*/
-  /*left: 0px;*/
-/*}*/
-
-
 #contents > #send-form input[type="text"]{display: inline-block; width: calc(100% - 104px); height: 30px; font-size: 12px;}
 #contents > #send-form input[type="submit"]{display: inline-block; width:100px; height: 30px; font-size: 12px;}
-
-
-/*#content{*/
-  /*width: 800px;*/
-  /*margin-left: auto;*/
-  /*margin-right: auto;*/
-  /*background-color: #66CCFF;*/
-  /*border: 2px solid #003399;*/
-  /*margin-top: 100px;*/
-/*}*/
-/*#content #room{*/
-  /*background-color: #ddd;*/
-  /*margin-bottom: 1em;*/
-  /*position: relative;*/
-/*}*/
-/*#content ul.window-btn-group{*/
-  /*position: absolute;*/
-  /*right: 50px;*/
-  /*top: 50px;*/
-  /*list-style: none;*/
-/*}*/
-/*#content ul.window-btn-group li{*/
-  /*display: inline-block;*/
-  /*background-color: black;*/
-  /*width: 20px;*/
-  /*height: 16px;*/
-  /*!*line-height: normal;*!*/
-/*}*/
-/*#content #messages{*/
-  /*width: 690px;*/
-  /*height: 300px;*/
-  /*overflow: auto;*/
-  /*background-color: #eee;*/
-  /*margin-bottom: 1em;*/
-  /*marign-right: 10px;*/
-/*}*/
-/*#content #room-list{*/
-  /*float: right;*/
-  /*width: 100px;*/
-  /*height: 300px;*/
-  /*overflow: auto;*/
-/*}*/
-/*#content #room-list div{*/
-  /*border-bottom: 1px solid #eee;*/
-  /*cursor: pointer;*/
-/*}*/
-/*#content #room-list div:hover{*/
-  /*background-color: #ddd;*/
-/*}*/
-/*#content #send-message{*/
-  /*width: 700px;*/
-  /*margin-bottom: 1em;*/
-  /*margin-right: 1em;*/
-/*}*/
-/*#content #help{*/
-  /*font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;*/
-/*}*/
 
 .user{
   position: absolute;
@@ -205,6 +140,15 @@ a {
 .user:hover{
   cursor: pointer;
 }
+
+/* 모달 */
+.mw{display: none; position:fixed;_position:absolute;top:0;left:0;width:100%;height:100%}
+.mw .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;filter:alpha(opacity=50)}
+.mw .fg{position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);}
+.mw button{ position: absolute; right: 0px; top: 0px; width: 80px; height: 80px; border: 0; background: #444; opacity: 1; color: #fff;}
+.mw button:hover {background-color: gold; color:#222;}
+/*.mw .fg{position:absolute;top:50%;left:50%;width:360px;
+height:160px;margin:-100px 0 0 -200px;padding:20px;border:3px solid #ccc;background:#fff}*/
 
 @keyframes wave {
 

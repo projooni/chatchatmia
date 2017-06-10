@@ -28,10 +28,12 @@ Chat.prototype.processCommand = function(command){
     // alert(3);
     console.log('processCommand');
 
+
     switch(command){
         case 'join':
             words.shift();
             var room = words.join(' ');
+            console.log(room);
             this.changeRoom(room);
             break;
         case 'nick':
