@@ -22,25 +22,40 @@ body {
 body #gnb{
   background-color: #918D84;
   height: 30px;
-  /*position: relative;*/
+  text-align: center;
+  margin-left: 200px;
+  /*display:inline-block;*/
 }
-/*body #gnb ul{*/
-  /*list-style: none;*/
-  /*color: seashell;*/
-  /*margin: 0px;*/
-  /*padding: 0px;*/
-  /*height: 30px;*/
-/*}*/
-/*body #gnb ul li{*/
-  /*display: inline-block;*/
-  /*margin: 0px 10px;*/
-/*}*/
-#gnb #room-name{display: inline-block; line-height:30px; width: 200px; text-align:center;
-  text-decoration: none; position: relative; color:#F9F8F4; font-weight: bold; font-size: 16px;}
-#gnb #room-name.close:hover{background-color:#C6BFAF;}
-#gnb #room-name.open:hover{background-color:#C6BFAF;}
-#gnb #room-name.close{  background-color: transparent; }
-#gnb #room-name.open{  background-color: #C6BFAF; }
+
+#gnb #room-name{line-height:30px; font-weight: bold; }
+
+#show-room{
+  display: inline-block;
+  line-height:30px;
+  width: 200px;
+  text-align:center;
+  text-decoration: none;
+  position: relative;
+  color:#F9F8F4;
+  font-weight: bold;
+  font-size: 16px;
+  float:left;
+  left: -200px;
+  }
+#show-room.close:hover{background-color:#C6BFAF;}
+#show-room.open:hover{background-color:#C6BFAF;}
+#show-room.close{  background-color: #918D84; }
+#show-room.open{  background-color: #C6BFAF; }
+#show-room:after{
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: 5px;
+  bottom: 5px;
+  width: 2px;
+  background-color: #F9F8F4;
+
+}
 
 #gnb .profile{
   position: absolute;
@@ -59,19 +74,6 @@ body #gnb{
   font-weight: bold;
 }
 
-
-
-/*body #gnb ul li a{*/
-  /*color: seashell;*/
-  /*text-decoration: none;*/
-  /*line-height: 30px;*/
-  /*font-weight: bold;*/
-/*}*/
-
-/*body #gnb ul li a:hover{*/
-  /*color: #66CCFF;*/
-/*}*/
-
 a {
   color: #00B7FF;
 }
@@ -89,7 +91,7 @@ a {
 }
 #lnb #create-room-btn{
   position: absolute;
-  bottom: 5px;
+  bottom: 40px;
   left: 5px;
   width: 186px;
   height: 30px;
@@ -103,27 +105,33 @@ a {
 #lnb #create-room-btn:hover{
   background-color: gold;
 }
-#contents{left: 200px; width: calc(100% - 200px); height: calc(100% - 30px); background-color:#F9F8F4; position: absolute;}
+#contents{left: 200px; width: calc(100% - 200px); height: calc(100% - 60px); position: absolute; background-color:#F9F8F4; overflow-y:auto; overflow-X:hidden;}
 #contents.lnb-open{ animation: contents-lnb-open 1s forwards;}
 #contents.lnb-close{ animation: contents-lnb-close 1s forwards;}
-#contents > #messages{ padding: 10px; }
+#contents > #messages{ padding: 10px;
+  position: relative;
+  bottom: 30px;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+}
 #contents > #messages > div{
   height: 30px;
   line-height: 30px;
   border-bottom: 1px dotted red;
 }
-#contents > #send-form{
+#send-form{
   width: 100%;
   font-size: 0px;
   letter-spacing: 0px;
   word-spacing: 0px;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
-  left: 0px;
+  /*left: 1px;*/
 }
 
-#contents > #send-form input[type="text"]{display: inline-block; width: calc(100% - 104px); height: 30px; font-size: 12px;}
-#contents > #send-form input[type="submit"]{display: inline-block; width:100px; height: 30px; font-size: 12px;}
+#send-form input[type="text"]{display: inline-block; width: calc(100% - 104px); height: 30px; font-size: 12px;}
+#send-form input[type="submit"]{display: inline-block; width:100px; height: 36px; font-size: 12px; border: 0;}
 
 .user{
   position: absolute;

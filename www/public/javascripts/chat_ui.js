@@ -38,7 +38,7 @@ $(document).ready(function(){
       var message;
 
       if(result.success){
-          message = 'You are now known as ' + result.name + ',';
+          message = '당신의 닉네임은 ' + result.name + ' 입니다,';
       }else{
           message = result.message;
       }
@@ -47,12 +47,15 @@ $(document).ready(function(){
 
    socket.on('joinResult', function(result){
        $('#room-name').text(result.room);
-       $('#messages').append(divSystemContentElement('Room changed.'));
+       $('#messages').append(divSystemContentElement('방이 변경됐습니다.'));
    });
 
    socket.on('message', function(message){
        var newElement = $('<div></div>').text(message.text);
        $('#messages').append(newElement);
+       console.log(document.getElementById("contents").scrollTop);
+       document.getElementById("contents").scrollTop = document.getElementById("contents").scrollHeight;
+
 
    });
 
@@ -97,7 +100,7 @@ $(document).ready(function(){
 
 
    var $el = {
-       roomName: $('#room-name'),
+       roomName: $('#show-room'),
        lnb: $('#lnb'),
        contents: $('#contents')
    };
@@ -177,6 +180,7 @@ function processUserInput(chatApp, socket){
         chatApp.sendMessage($('#room').text(), message);
         $('#messages').append(divEscapedContentElement(message));
         $('#messages').scrollTop($('#messages').prop('scrollHeight'));
+        document.getElementById("contents").scrollTop = document.getElementById("contents").scrollHeight;
     }
 
     $('#send-message').val('');
