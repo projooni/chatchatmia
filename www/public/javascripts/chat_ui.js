@@ -100,12 +100,13 @@ $(document).ready(function(){
 
 
    var $el = {
-       roomName: $('#show-room'),
+       roomName: $('#room-name'),
        lnb: $('#lnb'),
-       contents: $('#contents')
+       contents: $('#contents'),
+       showRoom: $('#show-room')
    };
 
-    $el.roomName.each(function(index, item){
+    $el.showRoom.each(function(index, item){
        console.log('room-name 이벤트 바인딩 forEach');
 
        $(item).on('click', function(){
@@ -177,7 +178,7 @@ function processUserInput(chatApp, socket){
             $('#messages').append(divEscapedContentElement(systemMessage));
         }
     }else{
-        chatApp.sendMessage($('#room').text(), message);
+        chatApp.sendMessage($('#room-name').text(), message);
         $('#messages').append(divEscapedContentElement(message));
         $('#messages').scrollTop($('#messages').prop('scrollHeight'));
         document.getElementById("contents").scrollTop = document.getElementById("contents").scrollHeight;
